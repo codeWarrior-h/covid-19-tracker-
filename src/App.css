@@ -2,3 +2,10 @@
   margin:0;
 }
 /* to make the default margins of react app as 0 */
+
+.app_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
