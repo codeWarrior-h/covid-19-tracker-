@@ -1,0 +1,30 @@
+
+.table {
+  margin-top: 20px;
+  overflow: scroll;
+  height: 400px;
+  /* //as the list of data is very big so we do the scroll option whenever its overflow  */
+  /* we have to give a height:  so that after that height the overflow will be executed to the component */
+  color: #6a5d5d;
+ }
+
+
+ /* .table::-webkit-scrollbar {
+ display: none;
+ } to remove the scroll bar */
+
+
+.table tr {
+  display: flex;
+  justify-content: space-between;
+  /* //to use the whole space in the table by the rows */
+}
+
+.table td {
+  padding: 0.5rem;
+}
+
+.table tr:nth-of-type(odd) {
+  /* //for evvery nth row of table which is odd change its color */
+  background-color: #f3f2f8;
+}
