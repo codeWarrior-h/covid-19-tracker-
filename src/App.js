@@ -2,6 +2,8 @@ import React , {useState , useEffect} from 'react';
 import './App.css';
 import { FormControl , Select , MenuItem } from "@material-ui/core";
 import Infobox from './Infobox';
+import Map from './Map';
+import {Card , CardContent } from "@material-ui/core";
 
 function App() {
 
@@ -44,8 +46,9 @@ function App() {
   }
 
   return (
-    <div className="app">
-     <div className = "app_header">
+    <div className="app row">
+     <div className = "app_left" >
+      <div className = "app_header">
 
         {/* Header */}
         {/* Title + dropdown field */}
@@ -76,12 +79,22 @@ function App() {
             <Infobox title = "Deaths" cases = {12345} total = {2000001} />
              {/* InfoBox */}
         </div>
-      {/* Table */}
-      {/* Graph */}
 
+        <Map />
       {/* Map */}
+
       </div>
 
+      <Card className = "app_right">
+        <CardContent>
+         <h3>Live Cases by Country</h3>
+         {/* Table */}
+
+         <h3>Worldwide new Cases</h3>
+        {/* Graph */}
+        </CardContent>
+      </Card>
+     </div>
   );
 }
 
