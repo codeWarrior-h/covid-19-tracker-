@@ -37,9 +37,8 @@ function App() {
   // if [] is empty but if [] contains countries so it will run when countries change
 
   const onCountryChange = async (event) => {
-    const countryCode = event.target.value;
 
-    console.log('yuuuup' , countryCode);
+    const countryCode = event.target.value;
 
     setCountry(countryCode);
   }
