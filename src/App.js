@@ -13,6 +13,17 @@ function App() {
 
  const [country , setCountry] = useState('worldwide');
 
+ const [countryInfo , setCountryInfo ] = useState({});
+
+ useEffect(() => {
+   fetch('https://disease.sh/v3/covid-19/all')
+   .then(response => response.json())
+   .then((data) => {
+     setCountryInfo(data);
+   });
+ } , []);
+ //as when we reload the page we want the data of worldwide
+
 //useEffect runs a piece of code for a given condition
 //it fires when the app is load first
   useEffect(() => {
@@ -41,8 +52,19 @@ function App() {
   const onCountryChange = async (event) => {
 
     const countryCode = event.target.value;
-
     setCountry(countryCode);
+
+    const url = countryCode === 'worldwide' ? 'https://disease.sh/v3/covid-19/all' :
+    `https://disease.sh/v3/covid-19/countries/${countryCode}`
+
+    await fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      setCountry(countryCode);
+
+      //storing all data of country given from the api
+      setCountryInfo(data);
+    })
   }
 
   return (
@@ -70,13 +92,13 @@ function App() {
 
          <div className = "app_stats">
 
-            <Infobox title = "Coronavirus Cases" cases = {123} total = {2000} />
+            <Infobox title = "Coronavirus Cases" cases = {countryInfo.todayCases} total = {countryInfo.cases} />
              {/* InfoBox title="Coronavirus cases"*/}
 
-            <Infobox title = "Recovered"  cases = {1234} total = {20001}/>
+            <Infobox title = "Recovered"  cases = {countryInfo.todayRecovered} total = {countryInfo.recovered}/>
              {/* InfoBox title = "recovries"*/}
 
-            <Infobox title = "Deaths" cases = {12345} total = {2000001} />
+            <Infobox title = "Deaths" cases = {countryInfo.todayDeaths} total = {countryInfo.deaths} />
              {/* InfoBox */}
         </div>
 
