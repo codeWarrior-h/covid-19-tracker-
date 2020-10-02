@@ -6,6 +6,7 @@ import Map from './Map';
 import {Card , CardContent } from "@material-ui/core";
 import Table from './Table';
 import {sortData} from './util';
+import LineGraph from './LineGraph';
 
 function App() {
 
@@ -122,7 +123,8 @@ function App() {
          <Table countries = {tableData} />
 
          <h3>Worldwide new Cases</h3>
-        {/* Graph */}
+         {/* Graph */}
+         <LineGraph />
         </CardContent>
       </Card>
      </div>
